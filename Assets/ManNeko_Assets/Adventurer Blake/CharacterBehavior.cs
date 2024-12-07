@@ -13,8 +13,14 @@ public class CharacterBehavior : MonoBehaviour
     private float startTime; // Tidpunkt när karaktären startade sin resa
     private Animator animator; // Animator för att hantera karaktärens rörelser
 
+    private float logTimer = 0f; // Timer för att logga avstånd
+    private float logInterval = 1f; // Intervallet för loggning (i sekunder)
+
+    private bool isWaitingAtStation = false; // Kontroll om vi är vid matstationen och väntar
+
     private void Start()
     {
+        Debug.Log("Start-metoden körs!");
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
@@ -44,6 +50,8 @@ public class CharacterBehavior : MonoBehaviour
         {
             agent.SetDestination(chosenFoodStation.position);
             animator.SetBool("IsWalking", true); // Sätt animation till gång
+            Debug.Log("Finding food");
+            Debug.Log("Agentens hastighet är: " + agent.speed);
         }
         else
         {
@@ -67,54 +75,71 @@ public class CharacterBehavior : MonoBehaviour
             if (register == null) continue;
 
             float distance = Vector3.Distance(transform.position, register.position);
+            Debug.Log($"Kassa position: {register.position}, Avstånd: {distance}");
+
             if (distance < minDistance)
             {
                 closest = register;
                 minDistance = distance;
+                Debug.Log($"Närmaste kassa hittills: {closest.position}, Avstånd: {minDistance}");
             }
         }
 
         return closest;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.CompareTag("FoodStation") && other.transform == chosenFoodStation)
+        // Uppdatera logg-timer
+        logTimer += Time.deltaTime;
+
+        // Logga distanserna varje sekund
+        if (logTimer >= logInterval)
         {
-            StartCoroutine(WaitAtStation());
+            // Nollställ timer
+            logTimer = 0f;
+
+            // Logga avstånd till matstationen
+            Debug.Log("Avstånd till matstationen: " + Vector3.Distance(transform.position, chosenFoodStation.position));
+
+            // Logga kvarvarande avstånd till destinationen
+            Debug.Log("Agentens kvarvarande avstånd: " + agent.remainingDistance);
         }
-        else if (other.CompareTag("CashRegister"))
+
+        // Kontrollera om karaktären har nått matstationen och är redo att vänta
+        if (Vector3.Distance(transform.position, chosenFoodStation.position) <= agent.stoppingDistance + 2.6f && !isWaitingAtStation)
         {
-            StopTimer();
+            if (!agent.isStopped)  // Kolla om agenten fortfarande rör sig
+            {
+                Debug.Log("Agenten har nått matstationen");
+                StartCoroutine(WaitAtStation());
+            }
         }
     }
 
     private IEnumerator WaitAtStation()
     {
-        agent.isStopped = true; // Stoppar karaktären vid stationen
+        isWaitingAtStation = true; // Sätt att vi nu väntar vid stationen
+        agent.isStopped = true;
+        Debug.Log("Väntar vid matstation...");
 
-        // Vänta tills agenten faktiskt har nått stationen
-        while (Vector3.Distance(agent.transform.position, chosenFoodStation.position) > agent.stoppingDistance)
-        {
-            yield return null; // Vänta tills karaktären är nära stationen
-        }
-
-        // Vänta i 3 sekunder vid matstationen
-        yield return new WaitForSeconds(waitTime);
-
-        // Återupptar rörelsen
-        agent.isStopped = false;
+        animator.SetBool("IsWalking", false); // Växla till stillastående animation
+        Debug.Log("Karaktären stannar vid matstationen.");
+        yield return new WaitForSeconds(waitTime); // Vänta vid stationen
 
         // Gå vidare till närmaste kassa
         Transform closestCashRegister = FindClosestCashRegister();
         if (closestCashRegister != null)
         {
+            Debug.Log($"Karaktären rör sig mot kassan: {closestCashRegister.position}");
+            agent.isStopped = false;
             agent.SetDestination(closestCashRegister.position);
-            animator.SetBool("IsWalking", true); // Sätt animation till gång igen
+            Debug.Log($"Agentens hastighet: {agent.speed}");
+            animator.SetBool("IsWalking", true); // Växla till gånganimation
         }
         else
         {
-            Debug.LogError("Ingen kassa hittades!", this);
+            Debug.LogError("Ingen kassa hittades!");
         }
     }
 

@@ -176,7 +176,6 @@ GameObject:
   - component: {fileID: 138775568}
   - component: {fileID: 138775567}
   - component: {fileID: 138775566}
-  - component: {fileID: 138775565}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: FoodStation
@@ -184,27 +183,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &138775565
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 138775564}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &138775566
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -267,7 +245,7 @@ Transform:
   m_GameObject: {fileID: 138775564}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.94, y: 0.51, z: 4.37}
+  m_LocalPosition: {x: 9.01, y: 0.51, z: 4.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -353,7 +331,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -466,7 +444,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0.3
+  m_StoppingDistance: 0.2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -489,7 +467,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -505,6 +483,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 586457467425228490, guid: de070a2a18f45a249ae3ebafc8d8e8d6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 930229465970485914, guid: de070a2a18f45a249ae3ebafc8d8e8d6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1815139531086616991, guid: de070a2a18f45a249ae3ebafc8d8e8d6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2083179553373866805, guid: de070a2a18f45a249ae3ebafc8d8e8d6, type: 3}
       propertyPath: m_Controller
       value: 
@@ -516,6 +506,10 @@ PrefabInstance:
     - target: {fileID: 4916148334478398556, guid: de070a2a18f45a249ae3ebafc8d8e8d6, type: 3}
       propertyPath: m_TagString
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490905966241719256, guid: de070a2a18f45a249ae3ebafc8d8e8d6, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8242417474803361359, guid: de070a2a18f45a249ae3ebafc8d8e8d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -557,7 +551,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 586457467425228490, guid: de070a2a18f45a249ae3ebafc8d8e8d6, type: 3}
+    - {fileID: 1815139531086616991, guid: de070a2a18f45a249ae3ebafc8d8e8d6, type: 3}
+    - {fileID: 5490905966241719256, guid: de070a2a18f45a249ae3ebafc8d8e8d6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -582,7 +579,6 @@ GameObject:
   - component: {fileID: 1007238540}
   - component: {fileID: 1007238539}
   - component: {fileID: 1007238538}
-  - component: {fileID: 1007238537}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: FoodStation
@@ -590,29 +586,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &1007238537
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007238536}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1007238538
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -784,7 +757,6 @@ GameObject:
   - component: {fileID: 1366003364}
   - component: {fileID: 1366003363}
   - component: {fileID: 1366003362}
-  - component: {fileID: 1366003361}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: FoodStation
@@ -792,27 +764,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1366003361
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1366003360}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1366003362
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1029,8 +980,8 @@ GameObject:
   - component: {fileID: 1562827335}
   - component: {fileID: 1562827334}
   - component: {fileID: 1562827333}
-  - component: {fileID: 1562827332}
   - component: {fileID: 1562827336}
+  - component: {fileID: 1562827338}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1038,27 +989,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1562827332
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1562827331}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1562827333
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1159,6 +1089,19 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 71de27a429b3f0441bbd0ee37c39d787, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &1562827338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562827331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d67620e35c4c304492695103d623376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surface: {fileID: 1562827336}
 --- !u!1 &1730832718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,7 +1136,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1347,7 +1290,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
