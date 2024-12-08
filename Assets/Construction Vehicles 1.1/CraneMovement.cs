@@ -30,13 +30,13 @@ public class CraneMovement : MonoBehaviour
             transform.Rotate(0, RotSpeed * Time.deltaTime, 0);
         }
 
-        // Adjust wire length with Q and E
-        if (Input.GetKey(KeyCode.Q))  // Make the rope longer
+        // Vajerns längd
+        if (Input.GetKey(KeyCode.Q))
         {
             Pendulum.AdjustWireLength(Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.E))  // Make the rope shorter
+        if (Input.GetKey(KeyCode.E))
         {
             Pendulum.AdjustWireLength(-Time.deltaTime);
         }

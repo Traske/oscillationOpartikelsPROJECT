@@ -2,17 +2,14 @@ using UnityEngine;
 
 public class WaveSimulation : MonoBehaviour
 {
-    // Variabler för att ställa in vågornas parametrar
-    public float amplitude;     // Amplitud (höjd på vågorna)
-    public float frequency;     // Frekvens (hur snabbt vågorna rör sig)
-    public float wavelength;    // Våglängd (avstånd mellan två toppar)
-    public float phase;         // Fasvinkel (var vågen börjar)
+    public float amplitude; // Amplitud (höjd på vågorna)
+    public float frequency; // Frekvens (hur snabbt vågorna rör sig)
+    public float wavelength; // Våglängd (avstånd mellan två toppar)
+    public float phase; // Fasvinkel (var vågen börjar)
 
-    // Referens till meshen
     private Mesh mesh;
     private Vector3[] vertices;
 
-    // Uppdatera vågorna varje frame
     void Start()
     {
         // Hämta meshen från Planen
@@ -22,7 +19,7 @@ public class WaveSimulation : MonoBehaviour
 
     void Update()
     {
-        // Uppdatera vertexpositionerna baserat på harmoniska svängningen
+        // Uppdaterar vertexpositionerna baserat på harmoniska svängningen
         AnimateWaves();
     }
 
