@@ -4,7 +4,7 @@ using System.Collections;
 public class CharacterSpawner : MonoBehaviour
 {
     public GameObject characterPrefab; // Prefab för karaktär
-    public Transform spawnPoint; // Plats där karaktärerna skapas
+    public Transform spawnPoint; // Plats där karaktärerna spawnar
     public int characterCount = 10; // Antal karaktärer att skapa
     public float spawnInterval = 2f; // Tid mellan spawns
 
